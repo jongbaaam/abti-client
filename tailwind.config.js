@@ -29,6 +29,9 @@ export default {
         "modal-default-height": "360px",
         "modal-content-height": "calc(100% - 32px)",
       },
+      backgroundImage: {
+        "not-found": "var(--not-found-image)",
+      },
     },
   },
   plugins: [],
