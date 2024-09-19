@@ -8,16 +8,14 @@ export const useUserStore = create(
     set => {
       return {
         ...initialUserState,
-        actions: {
-          setIsLoggedIn: isLoggedIn => {
-            return set({ isLoggedIn });
-          },
-          setUserInfo: userInfo => {
-            return set({ userInfo });
-          },
-          resetUserState: () => {
-            return set(initialUserState);
-          },
+        setIsLoggedIn: isLoggedIn => {
+          return set({ isLoggedIn });
+        },
+        setUserInfo: userInfo => {
+          return set({ userInfo });
+        },
+        resetUserState: () => {
+          return set(initialUserState);
         },
       };
     },
