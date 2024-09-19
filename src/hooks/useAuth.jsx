@@ -14,9 +14,6 @@ export default function useAuth() {
   const googleAuthProvider = new GoogleAuthProvider();
   const { isLoggedIn, userInfo, setIsLoggedIn, setUserInfo, resetUserState } =
     useUserStore(state => state);
-  console.log(setIsLoggedIn);
-  console.log(setUserInfo);
-  console.log(resetUserState);
 
   async function handleSignIn() {
     try {
@@ -40,8 +37,9 @@ export default function useAuth() {
           withCredentials: true,
         },
       );
+      const { userName, userEmail, photoUrl, apiKey } = userInfo;
 
-      setUserInfo(userInfo);
+      setUserInfo({ userName, userEmail, photoUrl, apiKey });
       setIsLoggedIn(firebaseAuth.currentUser ? true : false);
     } catch (error) {
       console.error("Google 로그인 실패", error);
