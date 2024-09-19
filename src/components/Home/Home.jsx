@@ -1,7 +1,10 @@
+import useAuth from "../../hooks/useAuth";
 import Button from "../common/Button";
 import HomeImage from "./HomeImage";
 
 export default function Home() {
+  const { handleSignIn } = useAuth();
+
   return (
     <main className="w-full max-w-screen-2xl h-full flex justify-around items-center flex-col md:flex-row">
       <aside className="flex justify-center items-center">
@@ -18,9 +21,7 @@ export default function Home() {
         </p>
         <Button
           className="bg-color-blue px-8 py-4 rounded-lg text-white font-semibold w-fit transition hover:bg-color-blue-hover"
-          onClick={() => {
-            console.log("시작하기");
-          }}
+          onClick={handleSignIn}
           text="시작하기"
         />
       </section>
