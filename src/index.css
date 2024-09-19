@@ -17,6 +17,7 @@
   --color-white: #e0e0e0;
   --color-black-5: rgba(0, 0, 0, 0.05);
   --color-black-10: rgba(0, 0, 0, 0.1);
+  --color-black-50: rgba(0, 0, 0, 0.5);
 }
 
 body {

@@ -19,9 +19,15 @@ export default {
         "color-white": "var(--color-white)",
         "color-black-5": "var(--color-black-5)",
         "color-black-10": "var(--color-black-10)",
+        "color-black-50": "var(--color-black-50)",
+      },
+      width: {
+        "modal-default-width": "640px",
       },
       height: {
         "container-height": "calc(100% - 100px)",
+        "modal-default-height": "360px",
+        "modal-content-height": "calc(100% - 32px)",
       },
     },
   },
