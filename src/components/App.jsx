@@ -5,8 +5,8 @@ import { useUserStore } from "../store/store";
 import Home from "./Home/Home";
 import Dashboard from "./Dashboard/Dashboard";
 import Header from "./Header/Header";
-import ProtectedRoute from "./ProtectedRoute";
 import NotFoundPage from "./common/NotFoundPage";
+import Testing from "./Testing/Testing";
 
 export default function App() {
   const { isLoggedIn } = useUserStore(state => state);
@@ -21,8 +21,10 @@ export default function App() {
             !isLoggedIn ? <Home /> : <Navigate to="/dashboard" replace />
           }
         />
-        <Route path="/dashboard" element={<ProtectedRoute />}>
-          <Route index element={<Dashboard />} />
+        <Route
+          path="/dashboard"
+          element={isLoggedIn ? <Dashboard /> : <Navigate to="/" replace />}>
+          <Route path=":projectId" element={<Testing />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
