@@ -37,9 +37,10 @@ export default function useAuth() {
           withCredentials: true,
         },
       );
-      const { userName, userEmail, photoUrl, apiKey } = userInfo;
 
-      setUserInfo({ userName, userEmail, photoUrl, apiKey });
+      const { userName, userEmail, photoUrl, apiKey, _id } = userInfo;
+
+      setUserInfo({ userName, userEmail, photoUrl, apiKey, userId: _id });
       setIsLoggedIn(firebaseAuth.currentUser ? true : false);
     } catch (error) {
       console.error("Google 로그인 실패", error);
