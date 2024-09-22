@@ -14,6 +14,10 @@ export default function SideBar() {
     setIsShowGuideModal(true);
   }
 
+  function handleGuideModalClose() {
+    setIsShowGuideModal(false);
+  }
+
   return (
     <>
       <div className="w-20 h-full p-2 flex flex-col justify-between items-center border-r-2 border-border-color-gray text-xs font-semibold">
@@ -37,7 +41,7 @@ export default function SideBar() {
           </ul>
         </div>
       </div>
-      <GuideModal isOpen={isShowGuideModal} onClose={setIsShowGuideModal} />
+      <GuideModal isOpen={isShowGuideModal} onClose={handleGuideModalClose} />
     </>
   );
 }
