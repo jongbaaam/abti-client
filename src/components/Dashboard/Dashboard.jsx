@@ -1,3 +1,15 @@
+import SideBarProject from "../SideBarProject/SideBarProject";
+import SideBar from "../SideBar/SideBar";
+import { Outlet } from "react-router-dom";
+
 export default function Dashboard() {
-  return <h1>ABTI Dashboard Page</h1>;
+  return (
+    <div className="h-container-height text-text-color-gray">
+      <main className="w-full h-full flex">
+        <SideBar />
+        <SideBarProject />
+        <Outlet />
+      </main>
+    </div>
+  );
 }
