@@ -52,7 +52,7 @@ export default function Modal({
       onKeyDown={handleKeyDownEsc}
       className={`${width} ${height} drop-shadow rounded-lg p-6`}>
       <div className="flex flex-col item-center w-full h-full">
-        <div className="h-[32px] flex justify-between items-center">
+        <div className="h-[32px] flex justify-between items-center mb-3">
           <h3 className="text-xl font-semibold">{title}</h3>
           {hasCloseBtn && (
             <Button
