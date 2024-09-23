@@ -40,6 +40,8 @@ export default function useAuth() {
 
       const { userName, userEmail, photoUrl, apiKey, _id } = userInfo;
 
+      document.cookie = `idToken=${idToken}; path=/`;
+
       setUserInfo({ userName, userEmail, photoUrl, apiKey, userId: _id });
       setIsLoggedIn(firebaseAuth.currentUser ? true : false);
     } catch (error) {
