@@ -9,7 +9,7 @@ import FormLabel from "../common/FormLabel";
 import {
   registerProjectByUserId,
   validateProjectUrl,
-} from "../../utils/projectUtils";
+} from "../../apis/projectApi";
 
 export default function ProjectAddModal({ isOpen, onClose }) {
   const { userId } = useUserStore(state => state.userInfo);
