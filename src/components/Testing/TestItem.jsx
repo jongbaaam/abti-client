@@ -1,24 +1,34 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 import Button from "../common/Button";
-import IcoArrowR from "../../assets/icon/ico_arrow_r.svg?react";
-
 import TestDeleteButton from "./TestDeleteButton";
 import TestIdCopyButton from "./TestIdCopyButton";
 import TestStatus from "./TestStatus";
+import IcoArrowR from "../../assets/icon/ico_arrow_r.svg?react";
+import { getToLocaleDateString } from "../../utils/dateUtil";
 
-export default function TestItem() {
+export default function TestItem({ data }) {
   const [isShowButton, setIsShowButton] = useState(false);
+  const { progressStatus, createdAt, title, _id } = data;
+
+  async function handleIdCopyButtonClick() {
+    await navigator.clipboard.writeText(_id);
+  }
 
   return (
     <li className="flex items-center border-b-2 cursor-pointer">
-      <div className="flex items-center grow p-4 transition hover:bg-color-blue-light">
+      <div
+        onClick={() => {}}
+        className="flex items-center grow p-4 transition hover:bg-color-blue-light">
         <div className="flex justify-between items-center grow mr-2">
           <div>
-            <div className="text-xl font-semibold mb-1">테스트명</div>
-            <div className="text-xs">Created on 00.00.00</div>
+            <div className="text-xl font-semibold mb-1">{title}</div>
+            <div className="text-xs">
+              {`Created on ${getToLocaleDateString(createdAt)}`}
+            </div>
           </div>
-          <TestStatus status={"PENDING"} />
+          <TestStatus status={progressStatus} />
         </div>
         <div className="w-12 flex justify-center items-center">
           <Button
@@ -34,9 +44,13 @@ export default function TestItem() {
       </div>
       <div
         className={`${isShowButton ? "flex" : "hidden"} justify-center items-center transition`}>
-        <TestIdCopyButton />
+        <TestIdCopyButton onClick={handleIdCopyButtonClick} />
         <TestDeleteButton />
       </div>
     </li>
   );
 }
+
+TestItem.propTypes = {
+  data: PropTypes.object.isRequired,
+};
