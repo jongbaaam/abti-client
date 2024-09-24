@@ -1,5 +1,16 @@
 import axios from "axios";
 
+export async function getProjectListByUserId(userId) {
+  const { data: response } = await axios.get(
+    `${import.meta.env.VITE_SERVER_URL}/users/${userId}/projects`,
+    {
+      withCredentials: true,
+    },
+  );
+
+  return response.projectListByUserId;
+}
+
 export async function validateProjectUrl(projectUrl) {
   const { data: projectUrlValidationResult } = await axios.get(
     `${import.meta.env.VITE_SERVER_URL}/users/project/url-validation/?projectUrl=${projectUrl}`,
