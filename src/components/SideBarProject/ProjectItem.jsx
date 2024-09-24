@@ -9,6 +9,7 @@ import { useSelectedProjectStore } from "../../store/store";
 export default function ProjectItem({ data, isActive }) {
   const [isHover, setIsHover] = useState(true);
   const { setSelectedProject } = useSelectedProjectStore(state => state);
+
   const navigate = useNavigate();
 
   function handleProjectClick() {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useSelectedProjectStore, useUserStore } from "../store/store";
-import { getProjectListByUserId } from "../apis/projectApi";
+import { getProjectListByUserId } from "../apis/projectsApi";
 
 export default function useProject() {
   const [projectList, setProjectList] = useState();
