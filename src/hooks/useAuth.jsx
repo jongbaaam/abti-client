@@ -8,12 +8,19 @@ import {
 import axios from "axios";
 
 import { firebaseAuth } from "../firebase/initializeFirebaseAuth";
-import { useUserStore } from "../store/store";
+import {
+  useUserStore,
+  useSelectedProjectStore,
+  useTestStore,
+} from "../store/store";
 
 export default function useAuth() {
   const googleAuthProvider = new GoogleAuthProvider();
   const { isLoggedIn, userInfo, setIsLoggedIn, setUserInfo, resetUserState } =
     useUserStore(state => state);
+
+  const { resetSelectedProject } = useSelectedProjectStore(state => state);
+  const { resetTestList } = useTestStore(state => state);
 
   async function handleSignIn() {
     try {
@@ -53,6 +60,8 @@ export default function useAuth() {
     try {
       signOut(firebaseAuth);
       resetUserState();
+      resetSelectedProject();
+      resetTestList();
     } catch (error) {
       console.error("로그아웃 실패", error);
     }
