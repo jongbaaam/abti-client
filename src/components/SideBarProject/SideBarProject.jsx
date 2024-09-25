@@ -35,7 +35,7 @@ export default function SideBarProject() {
 
   return (
     <>
-      <div className="w-52 h-full p-2 flex flex-col justify-between items-center border-r border-border-color-gray text-lg font-semibold">
+      <div className="min-w-52 h-full p-2 flex flex-col justify-between items-center border-r border-border-color-gray text-lg font-semibold">
         <ul className="w-full h-full mb-2 border-b flex flex-col items-center overflow-scroll">
           {projectItemList}
         </ul>
