@@ -6,20 +6,33 @@ import TestingInput from "./TestingInput";
 import TestingAddButton from "./TestAddButton";
 import TestItemList from "./TestItemList";
 import TestAddModal from "./TestAddModal";
+import TestStatisticsModal from "./TestStatisticsModal";
 
 export default function Testing() {
   const [isShowTestAddModal, setIsShowTestAddModal] = useState(false);
+  const [isShowTestStatisticsModal, setIsShowTestStatisticsModal] =
+    useState(false);
   const { testList, handleTestList } = useTest();
   const { selectedProject } = useSelectedProjectStore(state => state);
 
   useEffect(() => {
     handleTestList(selectedProject);
   }, [selectedProject, isShowTestAddModal]);
+
   function handleTestAddButtonClick() {
     setIsShowTestAddModal(true);
   }
+
   function handleTestAddModalClose() {
     setIsShowTestAddModal(false);
+  }
+
+  function handleTestStatisticsModalOpen() {
+    setIsShowTestStatisticsModal(true);
+  }
+
+  function handleTestStatisticsModalClose() {
+    setIsShowTestStatisticsModal(false);
   }
 
   return (
@@ -37,7 +50,10 @@ export default function Testing() {
           </div>
         </div>
         <div className="w-full grow overflow-hidden">
-          <TestItemList tests={testList ?? []} />
+          <TestItemList
+            tests={testList ?? []}
+            onClick={handleTestStatisticsModalOpen}
+          />
         </div>
       </section>
       <TestAddModal
@@ -45,6 +61,13 @@ export default function Testing() {
         isOpen={isShowTestAddModal}
         onClose={handleTestAddModalClose}
       />
+      {isShowTestStatisticsModal && (
+        <TestStatisticsModal
+          key={Math.random()}
+          isOpen={isShowTestStatisticsModal}
+          onClose={handleTestStatisticsModalClose}
+        />
+      )}
     </>
   );
 }

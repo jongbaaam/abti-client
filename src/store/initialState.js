@@ -4,6 +4,7 @@ const initialState = {
     userInfo: null,
   },
   selectedProject: null,
+  selectedTest: null,
   testList: null,
 };
 

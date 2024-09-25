@@ -3,7 +3,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 import initialState from "./initialState";
 
-const { user, selectedProject, testList } = initialState;
+const { user, selectedProject, testList, selectedTest } = initialState;
 
 export const useUserStore = create(
   persist(
@@ -48,22 +48,15 @@ export const useSelectedProjectStore = create(
   ),
 );
 
-export const useTestStore = create(
-  persist(
-    set => {
-      return {
-        testList,
-        setTestList: testList => {
-          return set({ testList });
-        },
-        resetTestList: () => {
-          return set({ testList });
-        },
-      };
+export const useTestStore = create(set => {
+  return {
+    selectedTest,
+    testList,
+    setSelectedTest: selectedTest => {
+      return set({ selectedTest });
     },
-    {
-      name: "testStore",
-      storage: createJSONStorage(() => sessionStorage),
+    resetSelectedTest: () => {
+      return set({ selectedTest });
     },
-  ),
-);
+  };
+});

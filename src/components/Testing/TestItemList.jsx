@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 
 import TestItem from "./TestItem";
 
-export default function TestItemList({ tests }) {
+export default function TestItemList({ tests, onClick }) {
   const testListByProjectId = tests.map(test => {
-    return <TestItem key={test._id} data={test} />;
+    return <TestItem key={test._id} data={test} onClick={onClick} />;
   });
 
   return (
@@ -14,4 +14,5 @@ export default function TestItemList({ tests }) {
 
 TestItemList.propTypes = {
   tests: PropTypes.array,
+  onClick: PropTypes.func,
 };

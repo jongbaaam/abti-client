@@ -4,31 +4,36 @@ import PropTypes from "prop-types";
 import Button from "../common/Button";
 import TestDeleteButton from "./TestDeleteButton";
 import TestIdCopyButton from "./TestIdCopyButton";
-import TestStatus from "./TestStatus";
 import IcoArrowR from "../../assets/icon/ico_arrow_r.svg?react";
 import { getToLocaleDateString } from "../../utils/dateUtil";
+import { useTestStore } from "../../store/store";
 
-export default function TestItem({ data }) {
+export default function TestItem({ data, onClick }) {
+  const { setSelectedTest } = useTestStore(state => state);
   const [isShowButton, setIsShowButton] = useState(false);
-  const { progressStatus, createdAt, title, _id } = data;
+  const { createdAt, title, _id } = data;
 
   async function handleIdCopyButtonClick() {
     await navigator.clipboard.writeText(_id);
   }
 
+  async function handleTestItemClick() {
+    setSelectedTest(data);
+    onClick();
+  }
+
   return (
     <li className="flex items-center border-b-2 cursor-pointer">
-      <div
-        onClick={() => {}}
-        className="flex items-center grow p-4 transition hover:bg-color-blue-light">
-        <div className="flex justify-between items-center grow mr-2">
+      <div className="flex items-center grow p-4 transition hover:bg-color-blue-light">
+        <div
+          onClick={handleTestItemClick}
+          className="flex justify-between items-center grow mr-2">
           <div>
             <div className="text-xl font-semibold mb-1">{title}</div>
             <div className="text-xs">
               {`Created on ${getToLocaleDateString(createdAt)}`}
             </div>
           </div>
-          <TestStatus status={progressStatus} />
         </div>
         <div className="w-12 flex justify-center items-center">
           <Button
@@ -53,4 +58,5 @@ export default function TestItem({ data }) {
 
 TestItem.propTypes = {
   data: PropTypes.object.isRequired,
+  onClick: PropTypes.func,
 };
