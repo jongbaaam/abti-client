@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import Button from "../common/Button";
-import CloseIcon from "../../assets/icon/ico_close.svg";
+import CloseIcon from "../../assets/icon/ico_close.svg?react";
 
 export default function Modal({
   isOpen,
@@ -58,7 +58,7 @@ export default function Modal({
             <Button
               className="p-1 transition hover:bg-color-black-5 rounded-lg"
               onClick={handleCloseModal}>
-              <img src={CloseIcon} alt="Close Icon" width={24} />
+              <CloseIcon />
             </Button>
           )}
         </div>
