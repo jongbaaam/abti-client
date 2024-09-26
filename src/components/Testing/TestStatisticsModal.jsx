@@ -25,6 +25,7 @@ export default function TestStatisticsModal({ isOpen, onClose }) {
   }, {});
 
   const statisticData = getStatisticsData(specimenData);
+
   const {
     conversionRateA,
     conversionRateB,
@@ -33,6 +34,14 @@ export default function TestStatisticsModal({ isOpen, onClose }) {
     pValue,
     significant,
   } = statisticData;
+
+  const isSignificantData = Object.keys(statisticData)
+    .filter(data => {
+      return Object.hasOwn(statisticData, data);
+    })
+    .some(data => {
+      return !isFinite(statisticData[data]);
+    });
 
   const groupCardList = specimenStatistics.map(group => {
     const { groupName, visitorSize, conversionsSize, _id } = group;
@@ -66,71 +75,82 @@ export default function TestStatisticsModal({ isOpen, onClose }) {
       width="w-[1280px]"
       height="h-[720px]">
       <div className="h-full flex flex-col items-center overflow-scroll">
-        <div className="w-full flex items-center">
-          <div>
-            <p className="border-l-4 px-2 py-1 text-text-color-gray-light font-semibold mb-4">
-              {description}
-            </p>
+        {isSignificantData ? (
+          <div className="w-full h-full flex justify-center items-center">
+            통계를 처리하기 위한 데이터가 부족합니다.
           </div>
-        </div>
-        <div className="w-full flex justify-between items-center mb-6">
-          <div className="flex items-center">{groupCardList}</div>
-          <div>
-            <div className="p-2 w-40 flex flex-col justify-center items-center">
-              <div className="text-lg font-semibold text-center">현재표본</div>
-              <div className="text-5xl font-semibold text-text-color-gray-light">
-                {totalVisitor}
+        ) : (
+          <>
+            <div className="w-full flex items-center">
+              <div>
+                <p className="border-l-4 px-2 py-1 text-text-color-gray-light font-semibold mb-4">
+                  {description}
+                </p>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="flex w-full mb-8">
-          <div
-            className={`w-1/2 h-fit flex flex-col p-2 border-l-4 ${significant ? "border-color-blue bg-color-blue-light" : "border-color-red-70 bg-color-red-10"}`}>
-            <div
-              className={`text-lg font-semibold mb-2 ${significant ? "text-color-blue" : "text-color-red"}`}>
-              테스트 현황
+            <div className="w-full flex justify-between items-center mb-6">
+              <div className="flex items-center">{groupCardList}</div>
+              <div>
+                <div className="p-2 w-40 flex flex-col justify-center items-center">
+                  <div className="text-lg font-semibold text-center">
+                    현재표본
+                  </div>
+                  <div className="text-5xl font-semibold text-text-color-gray-light">
+                    {totalVisitor}
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="flex justify-around items-center text-text-color-gray-light text-wrap">
-              {testResultMessage}
-            </p>
-          </div>
-        </div>
-        <div className="w-full border rounded-md p-4 mb-4">
-          <TestStatisticsChart statisticData={statisticData} />
-        </div>
-        <div className="w-full border rounded-md p-4 flex justify-evenly items-center">
-          <div className="w-1/6 flex flex-col justify-center">
-            <div className="text-lg font-semibold mb-2">그룹 A 전환율</div>
-            <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
-              {perc(conversionRateA)}
+            <div className="flex w-full mb-8">
+              <div
+                className={`w-1/2 h-fit flex flex-col p-2 border-l-4 ${significant ? "border-color-blue bg-color-blue-light" : "border-color-red-70 bg-color-red-10"}`}>
+                <div
+                  className={`text-lg font-semibold mb-2 ${significant ? "text-color-blue" : "text-color-red"}`}>
+                  테스트 현황
+                </div>
+
+                <p className="flex justify-around items-center text-text-color-gray-light text-wrap">
+                  {testResultMessage}
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="w-1/6 flex flex-col justify-center">
-            <div className="text-lg font-semibold mb-2">그룹 B 전환율</div>
-            <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
-              {perc(conversionRateB)}
+            <div className="w-full border rounded-md p-4 mb-4">
+              <TestStatisticsChart statisticData={statisticData} />
             </div>
-          </div>
-          <div className="w-1/6 flex flex-col justify-center">
-            <div className="text-lg font-semibold mb-2">상대적 전환율</div>
-            <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
-              {perc(relativeUpliftRate)}
+            <div className="w-full border rounded-md p-4 flex justify-evenly items-center">
+              <div className="w-1/6 flex flex-col justify-center">
+                <div className="text-lg font-semibold mb-2">그룹 A 전환율</div>
+                <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
+                  {perc(conversionRateA)}
+                </div>
+              </div>
+              <div className="w-1/6 flex flex-col justify-center">
+                <div className="text-lg font-semibold mb-2">그룹 B 전환율</div>
+                <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
+                  {perc(conversionRateB)}
+                </div>
+              </div>
+              <div className="w-1/6 flex flex-col justify-center">
+                <div className="text-lg font-semibold mb-2">상대적 전환율</div>
+                <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
+                  {perc(relativeUpliftRate)}
+                </div>
+              </div>
+              <div className="w-1/6 flex flex-col justify-center">
+                <div className="text-lg font-semibold mb-2">P-value</div>
+                <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
+                  {pValue.toFixed(4)}
+                </div>
+              </div>
+              <div className="w-1/6 flex flex-col justify-center">
+                <div className="text-lg font-semibold mb-2">표준 편차</div>
+                <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
+                  {round(standardErrorDifference, 6)}
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="w-1/6 flex flex-col justify-center">
-            <div className="text-lg font-semibold mb-2">P-value</div>
-            <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
-              {pValue.toFixed(4)}
-            </div>
-          </div>
-          <div className="w-1/6 flex flex-col justify-center">
-            <div className="text-lg font-semibold mb-2">표준 편차</div>
-            <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
-              {round(standardErrorDifference, 6)}
-            </div>
-          </div>
-        </div>
+          </>
+        )}
       </div>
     </Modal>
   );
