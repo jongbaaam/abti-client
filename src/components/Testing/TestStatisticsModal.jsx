@@ -11,6 +11,7 @@ import {
   perc,
   round,
 } from "../../utils/statisticsUtils";
+import TestStatisticsEmpty from "./TestStatisticsEmpty";
 
 export default function TestStatisticsModal({ isOpen, onClose }) {
   const { selectedTest } = useTestStore(state => state);
@@ -76,32 +77,30 @@ export default function TestStatisticsModal({ isOpen, onClose }) {
       width="w-[1280px]"
       height="h-[720px]">
       <div className="h-full flex flex-col items-center overflow-scroll">
-        {isSignificantData ? (
-          <div className="w-full h-full flex justify-center items-center">
-            통계를 처리하기 위한 데이터가 부족합니다.
+        <div className="w-full flex items-center">
+          <div>
+            <p className="border-l-4 px-2 py-1 text-text-color-gray-light font-semibold mb-4">
+              {description}
+            </p>
           </div>
+        </div>
+        <div className="w-full flex justify-between items-center mb-6">
+          <div className="flex items-center">{groupCardList}</div>
+          <div>
+            <div className="p-2 w-40 flex flex-col justify-center items-center">
+              <div className="text-lg font-semibold text-center">
+                전체 방문 수
+              </div>
+              <div className="text-5xl font-semibold text-text-color-gray-light">
+                {totalVisitor}
+              </div>
+            </div>
+          </div>
+        </div>
+        {isSignificantData ? (
+          <TestStatisticsEmpty />
         ) : (
           <>
-            <div className="w-full flex items-center">
-              <div>
-                <p className="border-l-4 px-2 py-1 text-text-color-gray-light font-semibold mb-4">
-                  {description}
-                </p>
-              </div>
-            </div>
-            <div className="w-full flex justify-between items-center mb-6">
-              <div className="flex items-center">{groupCardList}</div>
-              <div>
-                <div className="p-2 w-40 flex flex-col justify-center items-center">
-                  <div className="text-lg font-semibold text-center">
-                    전체 방문 수
-                  </div>
-                  <div className="text-5xl font-semibold text-text-color-gray-light">
-                    {totalVisitor}
-                  </div>
-                </div>
-              </div>
-            </div>
             <div className="flex w-full mb-8">
               <div
                 className={`w-1/2 h-fit flex flex-col p-2 border-l-4 ${significant ? "border-color-blue bg-color-blue-light" : "border-color-red-70 bg-color-red-10"}`}>
@@ -110,7 +109,7 @@ export default function TestStatisticsModal({ isOpen, onClose }) {
                   테스트 현황
                 </div>
 
-                <p className="flex justify-around items-center text-text-color-gray-light text-wrap">
+                <p className="flex items-center text-text-color-gray-light text-wrap">
                   {testResultMessage}
                 </p>
               </div>
