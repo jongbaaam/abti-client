@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import GuideModal from "../Modal/GuideModal";
-import SideBarApiKeyButton from "./SideBarApiKeyButton";
 import SideBarGuideButton from "./SideBarGuideButton";
 import SideBarModuleUrlButton from "./SideBarModuleUrlButton";
 
@@ -34,9 +33,6 @@ export default function SideBar() {
             </li>
             <li>
               <SideBarModuleUrlButton />
-            </li>
-            <li>
-              <SideBarApiKeyButton />
             </li>
           </ul>
         </div>
