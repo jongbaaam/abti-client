@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 
 import Button from "../common/Button";
@@ -14,7 +15,14 @@ export default function TestItem({ data, onClick }) {
   const { createdAt, title, _id } = data;
 
   async function handleIdCopyButtonClick() {
-    await navigator.clipboard.writeText(_id);
+    try {
+      await navigator.clipboard.writeText(_id);
+      console.log("실행");
+
+      toast.success("테스트 ID가 복사 되었습니다!");
+    } catch (error) {
+      toast.error("복사 과정에서 에러가 발생하였습니다.");
+    }
   }
 
   async function handleTestItemClick() {

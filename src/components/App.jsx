@@ -1,4 +1,5 @@
 import { Route, Routes, Navigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import { useUserStore } from "../store/store";
 
@@ -7,6 +8,8 @@ import Dashboard from "./Dashboard/Dashboard";
 import Header from "./Header/Header";
 import NotFoundPage from "./common/NotFoundPage";
 import Testing from "./Testing/Testing";
+
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App() {
   const { isLoggedIn } = useUserStore(state => state);
@@ -28,6 +31,19 @@ export default function App() {
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="light"
+        transition:Flip
+      />
     </>
   );
 }
