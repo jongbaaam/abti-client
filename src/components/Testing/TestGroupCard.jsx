@@ -7,7 +7,7 @@ export function TestGroupCard({ groupName, visitorSize, conversionsSize }) {
       <div className="flex justify-around items-center">
         <div className="mr-3">
           <div className="font-semibold text-center text-text-color-gray-light text-sm">
-            방문자
+            방문 수
           </div>
           <div className="text-2xl">{visitorSize}</div>
         </div>

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Modal from "../Modal/Modal";
 import { useTestStore } from "../../store/store";
 import { TestGroupCard } from "./TestGroupCard";
+import TestStatisticsDataCard from "./TestStatisticsDataCard";
 import TestStatisticsChart from "./TestStatisticsChart";
 import {
   getStatisticsData,
@@ -93,7 +94,7 @@ export default function TestStatisticsModal({ isOpen, onClose }) {
               <div>
                 <div className="p-2 w-40 flex flex-col justify-center items-center">
                   <div className="text-lg font-semibold text-center">
-                    현재표본
+                    전체 방문 수
                   </div>
                   <div className="text-5xl font-semibold text-text-color-gray-light">
                     {totalVisitor}
@@ -118,36 +119,31 @@ export default function TestStatisticsModal({ isOpen, onClose }) {
               <TestStatisticsChart statisticData={statisticData} />
             </div>
             <div className="w-full border rounded-md p-4 flex justify-evenly items-center">
-              <div className="w-1/6 flex flex-col justify-center">
-                <div className="text-lg font-semibold mb-2">그룹 A 전환율</div>
-                <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
-                  {perc(conversionRateA)}
-                </div>
-              </div>
-              <div className="w-1/6 flex flex-col justify-center">
-                <div className="text-lg font-semibold mb-2">그룹 B 전환율</div>
-                <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
-                  {perc(conversionRateB)}
-                </div>
-              </div>
-              <div className="w-1/6 flex flex-col justify-center">
-                <div className="text-lg font-semibold mb-2">상대적 전환율</div>
-                <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
-                  {perc(relativeUpliftRate)}
-                </div>
-              </div>
-              <div className="w-1/6 flex flex-col justify-center">
-                <div className="text-lg font-semibold mb-2">P-value</div>
-                <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
-                  {pValue.toFixed(4)}
-                </div>
-              </div>
-              <div className="w-1/6 flex flex-col justify-center">
-                <div className="text-lg font-semibold mb-2">표준 편차</div>
-                <div className="w-full bg-color-black-5 p-2 rounded text-text-color-gray-light font-semibold">
-                  {round(standardErrorDifference, 6)}
-                </div>
-              </div>
+              <TestStatisticsDataCard
+                title="그룹 A 전환율"
+                statisticsData={perc(conversionRateA)}
+                description="기존 안 방문자가 기대하는 작업을 수행하는 비율"
+              />
+              <TestStatisticsDataCard
+                title="그룹 B 전환율"
+                statisticsData={perc(conversionRateB)}
+                description="변경 안 방문자가 기대하는 작업을 수행하는 비율"
+              />
+              <TestStatisticsDataCard
+                title="상대적 전환율"
+                statisticsData={perc(relativeUpliftRate)}
+                description="두 그룹의 상대적인 전환율 차이"
+              />
+              <TestStatisticsDataCard
+                title="P-value"
+                statisticsData={pValue.toFixed(4)}
+                description="테스트 결과가 우연일 확률을 계산한 수치로 0.05을 기준으로 낮을 경우 테스트의 결과가 유의미함 판별"
+              />
+              <TestStatisticsDataCard
+                title="표준 오차"
+                statisticsData={round(standardErrorDifference, 6)}
+                description="수치가 0에 가까울수록 테스트 결과가 안정적임을 나타냄"
+              />
             </div>
           </>
         )}
