@@ -1,20 +1,27 @@
 import PropTypes from "prop-types";
 
+import { useTestStore, useUserStore } from "../../store/store";
+
 import Modal from "../Modal/Modal";
-import { useTestStore } from "../../store/store";
 import { TestGroupCard } from "./TestGroupCard";
 import TestStatisticsDataCard from "./TestStatisticsDataCard";
 import TestStatisticsChart from "./TestStatisticsChart";
+import TestStatisticsEmpty from "./TestStatisticsEmpty";
+import RefreshIcon from "../../assets/icon/ico_refresh.svg?react";
+import Button from "../common/Button";
+
 import {
   getStatisticsData,
   getTestResultMessage,
   perc,
   round,
 } from "../../utils/statisticsUtils";
-import TestStatisticsEmpty from "./TestStatisticsEmpty";
+import { getTestByTestId } from "../../apis/testsApi";
 
 export default function TestStatisticsModal({ isOpen, onClose }) {
-  const { selectedTest } = useTestStore(state => state);
+  const { selectedTest, setSelectedTest } = useTestStore(state => state);
+  const { userInfo } = useUserStore(state => state);
+
   const { title, description, specimenStatistics } = selectedTest;
 
   const specimenData = specimenStatistics.reduce((acc, cur) => {
@@ -68,6 +75,19 @@ export default function TestStatisticsModal({ isOpen, onClose }) {
     relativeUpliftRate,
   });
 
+  async function handleRefreshButtonClick() {
+    const { projectId, _id: testId } = selectedTest;
+    const { userId } = userInfo;
+
+    const refreshedTest = await getTestByTestId({
+      userId,
+      projectId,
+      testId,
+    });
+
+    await setSelectedTest(refreshedTest);
+  }
+
   return (
     <Modal
       title={title}
@@ -77,11 +97,18 @@ export default function TestStatisticsModal({ isOpen, onClose }) {
       width="w-[1280px]"
       height="h-[720px]">
       <div className="h-full flex flex-col items-center overflow-scroll">
-        <div className="w-full flex items-center">
+        <div className="w-full flex justify-between items-center mb-4">
           <div>
-            <p className="border-l-4 px-2 py-1 text-text-color-gray-light font-semibold mb-4">
+            <p className="border-l-4 px-2 py-1 text-text-color-gray-light font-semibold">
               {description}
             </p>
+          </div>
+          <div>
+            <Button
+              className="p-1 transition border hover:bg-color-black-5 rounded-md"
+              onClick={handleRefreshButtonClick}>
+              <RefreshIcon className="fill-text-color-gray-light" />
+            </Button>
           </div>
         </div>
         <div className="w-full flex justify-between items-center mb-6">
