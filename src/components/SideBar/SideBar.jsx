@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import GuideModal from "../Modal/GuideModal";
+import GuideModal from "./GuideModal";
 import SideBarGuideButton from "./SideBarGuideButton";
 import SideBarModuleUrlButton from "./SideBarModuleUrlButton";
 

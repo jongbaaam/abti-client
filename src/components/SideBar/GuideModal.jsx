@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import Modal from "./Modal";
+import Modal from "../Modal/Modal";
 
 export default function GuideModal({ isOpen, onClose }) {
   return (
