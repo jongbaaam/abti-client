@@ -13,3 +13,5 @@ export const TEST_STATUS = {
     colorClassName: "bg-color-red-10 border-color-red-70 text-color-red",
   },
 };
+
+export const ABTI_CLIENT_SCRIPT = `<script async src="${import.meta.env.VITE_SERVER_URL}/abti/abtiClient"></script>`;
