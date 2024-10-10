@@ -1,23 +1,17 @@
 # ABTI
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ebff20b0-53e2-4cc3-bbdc-00e1e99d40d7">
+  
+</p>
 
-```
-프로젝트 이미지 첨부 예정
-```
-
-ABTI는 쉽게 A/B 테스트 환경을 구축하여 자신의 웹 사이트에서 테스트를 진행할 수 있는 서비스입니다.
-
+  ABTI는 쉽게 A/B 테스트 환경을 구축하여 자신의 웹 사이트에서 테스트를 진행할 수 있는 서비스입니다.
 <br>
 
 ## 📌 목차
 
-<!-- toc -->
-
 - ### [💡 기획 동기](#%F0%9F%92%A1-%EA%B8%B0%ED%9A%8D-%EB%8F%99%EA%B8%B0)
 
 - ### [⌨️ 핵심 기능 개발 과정](#%E2%8C%A8%EF%B8%8F-%ED%95%B5%EC%8B%AC-%EA%B8%B0%EB%8A%A5-%EA%B0%9C%EB%B0%9C-%EA%B3%BC%EC%A0%95)
-
-
-<!-- tocstop -->
 
 <br>
 
