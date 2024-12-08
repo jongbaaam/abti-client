@@ -281,7 +281,7 @@ _생성되지 않은 요소에 이벤트 핸들러를 할당할 경우 에러_
 
 <div align="center">
 
-<img width="800" alt="이벤트 전파 과정 이미지" src="https://github.com/user-attachments/assets/74b0636c-84be-460f-87a8-0e4b16020d5b">
+<img width="600" alt="이벤트 전파 과정 이미지" src="https://github.com/user-attachments/assets/74b0636c-84be-460f-87a8-0e4b16020d5b">
 
 _이벤트 전파(Event Propagation) 과정_
 
