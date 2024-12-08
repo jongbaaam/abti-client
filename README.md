@@ -413,7 +413,7 @@ _If-Not-Match 헤더를 포함한 조건부 요청_
 
 <div align="center">
 
-<img width="600" alt="Etag 비교 방식 유효성 검사 과정 이미지" src="https://github.com/user-attachments/assets/a45065f8-5ddb-45eb-bfd4-1c18126384c1">
+<img width="800" alt="Etag 비교 방식 유효성 검사 과정 이미지" src="https://github.com/user-attachments/assets/a45065f8-5ddb-45eb-bfd4-1c18126384c1">
 
 _Etag 비교 방식 유효성 검사 과정_
 
