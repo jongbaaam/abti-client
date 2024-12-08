@@ -91,7 +91,7 @@
 
 <br>
 
-<img width="600" alt="방문자 행동 데이터 수집 과정 이미지" src="https://github.com/user-attachments/assets/73390a58-633e-4507-8352-6b5fba593c75">
+<img width="800" alt="방문자 행동 데이터 수집 과정 이미지" src="https://github.com/user-attachments/assets/73390a58-633e-4507-8352-6b5fba593c75">
 
 _방문자 행동 데이터 수집 과정_
 
@@ -113,7 +113,7 @@ _방문자 행동 데이터 수집 과정_
 
 <br>
 
-<img width="600" alt="방문자 식별 정보 HTTP 쿠키 할당 이미지" src="https://github.com/user-attachments/assets/5bc6fa55-a0a1-4e12-9b70-ffae1425fcca">
+<img width="800" alt="방문자 식별 정보 HTTP 쿠키 할당 이미지" src="https://github.com/user-attachments/assets/5bc6fa55-a0a1-4e12-9b70-ffae1425fcca">
 
 _방문자 식별 정보 HTTP 쿠키 할당_
 
@@ -281,7 +281,7 @@ _생성되지 않은 요소에 이벤트 핸들러를 할당할 경우 에러_
 
 <div align="center">
 
-<img width="600" alt="이벤트 전파 과정 이미지" src="https://github.com/user-attachments/assets/74b0636c-84be-460f-87a8-0e4b16020d5b">
+<img width="800" alt="이벤트 전파 과정 이미지" src="https://github.com/user-attachments/assets/74b0636c-84be-460f-87a8-0e4b16020d5b">
 
 _이벤트 전파(Event Propagation) 과정_
 
@@ -331,7 +331,7 @@ window.addEventListener("click", (event) => {
 
 <div align="center">
 
-<img width="600" alt="자바스크립트 코드 난독화 예시 이미지" src="https://github.com/user-attachments/assets/eff829d1-57e1-461b-9916-fd7e500a1158">
+<img width="800" alt="자바스크립트 코드 난독화 예시 이미지" src="https://github.com/user-attachments/assets/eff829d1-57e1-461b-9916-fd7e500a1158">
 
 _자바스크립트 코드 난독화(Uglify) 예시_
 
@@ -348,7 +348,7 @@ _자바스크립트 코드 난독화(Uglify) 예시_
 
 <div align="center">
 
-<img width="600" alt="스크립트 크기 축소 및 로딩 속도 개선 이미지" src="https://github.com/user-attachments/assets/1731abf1-cdf3-4b1a-a257-64f927048583">
+<img width="800" alt="스크립트 크기 축소 및 로딩 속도 개선 이미지" src="https://github.com/user-attachments/assets/1731abf1-cdf3-4b1a-a257-64f927048583">
 
 _축소(Minify)으로 인한 스크립트 크기 축소 및 페이지 로딩 속도 개선_
 
@@ -387,7 +387,7 @@ _HTTP 캐싱 관련 응답 헤더_
 
 <div align="center">
 
-<img width="600" alt="스니펫 스크립트 로드 응답 헤더 이미지" src="https://github.com/user-attachments/assets/00a522ff-8cc3-4db9-a74a-fcde97c4ac48">
+<img width="800" alt="스니펫 스크립트 로드 응답 헤더 이미지" src="https://github.com/user-attachments/assets/00a522ff-8cc3-4db9-a74a-fcde97c4ac48">
 
 _스니펫 스크립트 로드 응답 헤더_
 
@@ -401,7 +401,7 @@ _스니펫 스크립트 로드 응답 헤더_
 
 <div align="center">
 
-<img width="600" alt="If-Not-Match 헤더를 포함한 조건부 요청 이미지" src="https://github.com/user-attachments/assets/1db4047c-2a5e-4080-a421-0e1ea4ef00c2">
+<img width="800" alt="If-Not-Match 헤더를 포함한 조건부 요청 이미지" src="https://github.com/user-attachments/assets/1db4047c-2a5e-4080-a421-0e1ea4ef00c2">
 
 _If-Not-Match 헤더를 포함한 조건부 요청_
 
