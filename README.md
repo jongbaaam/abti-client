@@ -19,7 +19,7 @@
 
 <br>
 
-#### [클라이언트 레포지토리](https://github.com/jongbaaam/abti-client) | [서버 레포지토리](https://github.com/jongbaaam/abti-server) | [ABTI 바로가기](#)
+#### [클라이언트 레포지토리](https://github.com/jongbaaam/abti-client) | [서버 레포지토리](https://github.com/jongbaaam/abti-server)
 
 </div>
 
@@ -426,15 +426,3 @@ _Etag 비교 방식 유효성 검사 과정_
 이를 통해 사용자의 웹 프로젝트 성능 유지와 최적화하여 서비스 사용자의 웹 프로젝트의 영향을 최소화할 수 있었습니다.
 
 <br>
-<br>
-
-## 회고
-
-```
-
-3줄 내외 정도의 분량으로 작성하기
-
-- 프로젝트 개발 과정에서 느낀점
-- 개인적인 느낀점
-
-```
